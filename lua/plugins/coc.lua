@@ -82,8 +82,8 @@ keyset("n", "<leader>rn", "<Plug>(coc-rename)", {silent = true})
 
 
 -- Formatting selected code
-keyset("x", "<leader>f", "<Plug>(coc-format-selected)", {silent = true})
-keyset("n", "<leader>f", "<Plug>(coc-format-selected)", {silent = true})
+keyset("x", "<leader>F", "<Plug>(coc-format-selected)", {silent = true})
+keyset("n", "<leader>F", ":call CocAction('format')<cr>", {silent = false})
 
 
 -- Setup formatexpr specified filetype(s)
