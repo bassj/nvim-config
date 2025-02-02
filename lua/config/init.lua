@@ -15,4 +15,6 @@ vim.opt.foldmethod = 'indent'
 
 vim.opt.background = 'dark'
 
+vim.opt.wrap = false
+
 require("config.lazy")
