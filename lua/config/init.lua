@@ -11,6 +11,7 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+vim.opt.foldenable = false -- Start unfolded by default
 vim.opt.foldmethod = 'indent'
 
 vim.opt.background = 'dark'
