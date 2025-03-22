@@ -1,3 +1,18 @@
+function get_uname()
+    local handle = io.popen("uname -r")
+    local output = handle:read("*a")
+    handle:close()
+    return output
+end
+
+local enabled = true
+local uname = get_uname()
+
+if string.find(uname, "microsoft") then
+    enabled = false
+end
+
+
 local M = {
     '3rd/diagram.nvim',
     dependencies = {
@@ -8,9 +23,7 @@ local M = {
             theme = "forest",
         },
     },
-    config = function ()
-        require("diagram").setup({})
-    end
+    enabled = enabled
 }
 
 return M
