@@ -6,14 +6,23 @@ function get_uname()
 end
 
 
+function supports_images()
+    if jit and jit.os == "Windows" then
+        return false
+    end
+    
+    local uname = get_uname()
 
-local enabled = true
-local backend = "ueberzug"
-local uname = get_uname()
+    if string.find(uname, "microsoft") then
+        return false
+    end
 
-if string.find(uname, "microsoft") then
-    enabled = false
+    return true
 end
+
+
+local enabled = supports_images()
+local backend = "ueberzug"
 
 if os.getenv("TERM") == "xterm-kitty" then
     backend = "kitty"

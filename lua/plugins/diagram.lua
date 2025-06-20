@@ -5,13 +5,22 @@ function get_uname()
     return output
 end
 
-local enabled = true
-local uname = get_uname()
 
-if string.find(uname, "microsoft") then
-    enabled = false
+function supports_images()
+    if jit and jit.os == "Windows" then
+        return false
+    end
+    
+    local uname = get_uname()
+
+    if string.find(uname, "microsoft") then
+        return false
+    end
+
+    return true
 end
 
+local enabled = supports_images()
 
 local M = {
     '3rd/diagram.nvim',

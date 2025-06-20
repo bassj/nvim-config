@@ -7,10 +7,17 @@ local M = {
     config = function ()
         local builtin = require("telescope.builtin")
 
+        local find_docs = function()
+            return builtin.live_grep({
+                search_dirs = {vim.env.VIMRUNTIME .. '/doc'}
+            })
+        end
+
         vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
         vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
         vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
         vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+        vim.keymap.set('n', '<leader>fd', find_docs, {})
     end
 }
 
