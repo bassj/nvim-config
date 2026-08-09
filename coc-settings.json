@@ -3,5 +3,6 @@
     "zig.startUpMessage": true,
     "zig.path": "zls",
     "zig.debugLog": false,
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "coc.preferences.formatOnSave": false
 }

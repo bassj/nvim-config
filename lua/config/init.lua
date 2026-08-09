@@ -40,4 +40,33 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
     end
 })
 
+vim.diagnostic.config({
+  virtual_text = false, -- Optional: Turns off inline virtual text if you find it cluttered
+  underline = true,
+  signs = true,
+})
+
+-- Change the cursor hold delay (default is 4000ms)
+vim.o.updatetime = 300
+
+-- Automatically show diagnostics in a floating window on hover
+vim.api.nvim_create_autocmd("CursorHold", {
+  buffer = bufnr,
+  callback = function()
+    local opts = {
+      focusable = false,
+      close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+      border = 'rounded',
+      source = 'always', -- Shows the source of the error (e.g., tsserver, pyright)
+      prefix = ' ',
+      scope = 'cursor',
+    }
+    vim.diagnostic.open_float(nil, opts)
+  end,
+})
+
+vim.keymap.set({ "n", "v" }, "<leader>F", function()
+    vim.lsp.buf.format({ async = true })
+end, { desc = "Format current buffer or selection" })
+
 require("config.lazy")
